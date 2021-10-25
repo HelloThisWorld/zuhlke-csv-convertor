@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+
+  mysql-db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password  --init-file /data/application/init.sql
+    restart: always
+    volumes:
+        - ./init.sql:/data/application/init.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: zuhlke
+    ports:
+      - 3306:3306
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8888:8080
+
+  converter:
+        build: .
+        depends_on:
+        - mysql-db
+        environment:
+            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/zuhlke?characterEncoding=utf8&useSSL=false
+        ports:
+            - 8090:8090
