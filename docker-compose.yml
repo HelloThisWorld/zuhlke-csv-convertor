@@ -20,11 +20,11 @@ services:
     ports:
       - 8888:8080
 
-  converter:
-        build: .
-        depends_on:
-        - mysql-db
-        environment:
-            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/zuhlke?characterEncoding=utf8&useSSL=false
-        ports:
-            - 8090:8090
+#  converter:
+#        build: .
+#        depends_on:
+#        - mysql-db
+#        environment:
+#            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/zuhlke?characterEncoding=utf8&useSSL=false
+#        ports:
+#            - 8090:8090
