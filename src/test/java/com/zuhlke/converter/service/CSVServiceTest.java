@@ -14,9 +14,9 @@ import com.zuhlke.converter.model.dto.StoreOrderDTO;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class CSVServcieTest {
+public class CSVServiceTest {
 	@Autowired
-	private CSVServcie servcie;
+	private CSVService servcie;
 	
 	@Test
 	public void testGetDataFromFileWithHappyPath() {

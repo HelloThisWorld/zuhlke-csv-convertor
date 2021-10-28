@@ -22,8 +22,8 @@ import com.zuhlke.converter.repository.StoreOrderRepository;
 import com.zuhlke.converter.service.utils.CSVToDTOUtil;
 
 @Service
-public class CSVServcie {
-	private static final Logger LOOGER = LoggerFactory.getLogger(CSVServcie.class);
+public class CSVService {
+	private static final Logger LOGGER = LoggerFactory.getLogger(CSVService.class);
 
 	@Autowired
 	private StoreOrderRepository repository;
@@ -39,7 +39,7 @@ public class CSVServcie {
 		try {
 			repository.saveAll(dtoList);
 		} catch (Exception e) {
-			LOOGER.error(e.getMessage(), e);
+			LOGGER.error(e.getMessage(), e);
 		}
 	}
 	
@@ -55,10 +55,10 @@ public class CSVServcie {
 			Reader targetReader = new FileReader(csv);
 
 			List<Sales> sales = new CsvToBeanBuilder<Sales>(targetReader).withType(Sales.class).build().parse();
-			LOOGER.info("sales order number {}", sales.size());
+			LOGGER.info("sales order number {}", sales.size());
 			List<StoreOrderDTO> dtoList = new ArrayList<>();
 			for (Sales s : sales) {
-				LOOGER.info("Processing {}", s);
+				LOGGER.info("Processing {}", s);
 				StoreOrderDTO data = CSVToDTOUtil.convert(s);
 				if(data != null && !dtoList.contains(data)) {
 					dtoList.add(data);
@@ -67,7 +67,7 @@ public class CSVServcie {
 			
 			return dtoList;
 		} catch (IOException e) {
-			LOOGER.error("No such file");
+			LOGGER.error("No such file");
 			return null;
 		}
 	}
