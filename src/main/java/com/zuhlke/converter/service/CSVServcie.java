@@ -55,9 +55,10 @@ public class CSVServcie {
 			Reader targetReader = new FileReader(csv);
 
 			List<Sales> sales = new CsvToBeanBuilder<Sales>(targetReader).withType(Sales.class).build().parse();
-
+			LOOGER.info("sales order number {}", sales.size());
 			List<StoreOrderDTO> dtoList = new ArrayList<>();
 			for (Sales s : sales) {
+				LOOGER.info("Processing {}", s);
 				StoreOrderDTO data = CSVToDTOUtil.convert(s);
 				if(data != null && !dtoList.contains(data)) {
 					dtoList.add(data);

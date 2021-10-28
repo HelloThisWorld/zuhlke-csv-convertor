@@ -25,9 +25,7 @@ dependencies {
 	implementation "org.springframework.boot:spring-boot-starter-reactor-netty"
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	
+
 	implementation group: 'com.opencsv', name: 'opencsv', version: '5.5.2'
 	implementation group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.4'
 	
