@@ -43,7 +43,7 @@ public class Sales {
 	@CsvBindByName(column = "Category")
 	private String category;
 	@CsvBindByName(column = "Sub-Category")
-	private String subCategrory;
+	private String subCategory;
 	@CsvBindByName(column = "Product Name")
 	private String productName;
 	@CsvBindByName(column = "Sales")

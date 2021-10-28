@@ -55,6 +55,7 @@ public class CSVService {
 			Reader targetReader = new FileReader(csv);
 
 			List<Sales> sales = new CsvToBeanBuilder<Sales>(targetReader).withType(Sales.class).build().parse();
+			targetReader.close();
 			LOGGER.info("sales order number {}", sales.size());
 			List<StoreOrderDTO> dtoList = new ArrayList<>();
 			for (Sales s : sales) {
@@ -64,7 +65,6 @@ public class CSVService {
 					dtoList.add(data);
 				}
 			}
-			
 			return dtoList;
 		} catch (IOException e) {
 			LOGGER.error("No such file");
